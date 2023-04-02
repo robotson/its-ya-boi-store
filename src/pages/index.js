@@ -9,6 +9,7 @@ export default function Home() {
       <h1>
         {"It's ya boi!"}
       </h1>
+      <p>{"Doin it right once again"}</p>
     </>
   )
 }
