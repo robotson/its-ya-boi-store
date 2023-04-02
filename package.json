@@ -9,6 +9,7 @@
     "lint": "node -r dotenv-vault-core/config ./node_modules/.bin/next lint"
   },
   "dependencies": {
+    "@stripe/stripe-js": "^1.52.0",
     "dotenv": "^16.0.3",
     "dotenv-vault": "^1.18.0",
     "dotenv-vault-core": "^0.7.0",
@@ -16,6 +17,7 @@
     "eslint-config-next": "13.2.4",
     "next": "13.2.4",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "stripe": "^11.17.0"
   }
 }
