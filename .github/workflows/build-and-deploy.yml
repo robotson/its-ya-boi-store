@@ -18,7 +18,7 @@ jobs:
       - name: Build and Export
         run: npm run build
         env:
-        DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
+          DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
       - name: Add .nojekyll file
         run: touch ./out/.nojekyll
       - name: Deploy to GitHub Pages
