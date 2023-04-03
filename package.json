@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@stripe/stripe-js": "^1.52.0",
+    "currency.js": "^2.0.4",
     "dotenv": "^16.0.3",
     "dotenv-vault": "^1.18.0",
     "dotenv-vault-core": "^0.7.0",

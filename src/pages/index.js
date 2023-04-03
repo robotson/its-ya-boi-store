@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { getProducts } from '@/lib/products';
+import currency from 'currency.js';
 
 export default function ItsYaBoi({ allProducts }) {
   return (
@@ -14,7 +15,7 @@ export default function ItsYaBoi({ allProducts }) {
       <ul>
           {allProducts.map((product) => (
           <li key={product.id}>
-            {product.name}
+            {product.name}{", "}{currency(product.price.unit_amount, { fromCents: true }).format()}
           </li>
         ))}
       </ul>
