@@ -13,10 +13,10 @@ function Cart({ cartItems, onIncrement, onDecrement, onDelete }) {
 
                 = {currency(item.quantity * item.price.unit_amount, {
                   fromCents: true,
-                }).format()}
+                }).format()}{' '}
                 <button onClick={() => onIncrement(item)}>+</button>{' '}
                 <button onClick={() => onDecrement(item)}>-</button>{' '}
-                <button onClick={() => onDelete(item)}>delete</button>{' '}
+                <button onClick={() => onDelete(item)}>delete</button>
               </li>
             ))}
             <li>
