@@ -1,3 +1,4 @@
+import {loadStripe} from '@stripe/stripe-js';
 export function addToCart(product, cartItems, setCartItems) {
     const existingItem = cartItems.find((item) => item.id === product.id);
     if (existingItem) {
@@ -42,13 +43,9 @@ export function addToCart(product, cartItems, setCartItems) {
       body: JSON.stringify({ cart })
     })
       .then(response => {
-        if (response.redirected) {
           // Handle redirect response
+          console.log("redirecting...");
           window.location.href = response.url;
-        } else {
-          // Handle successful response
-          console.log(response);
-        }
       })
       .catch(error => {
         // handle error

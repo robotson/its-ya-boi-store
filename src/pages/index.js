@@ -37,10 +37,10 @@ export default function ItsYaBoi({ allProducts }) {
     <>
       <Head>
         <title>{process.env.GREETING + " webstore"}</title>
-        <meta 
+        {/* <meta 
           http-equiv="Content-Security-Policy"
           content="frame-src https://checkout.stripe.com;"
-        />
+        /> */}
       </Head>
       <h1>
         {"It's ya boi!"}

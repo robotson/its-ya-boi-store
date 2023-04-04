@@ -9,6 +9,7 @@
     "lint": "node -r dotenv-vault-core/config ./node_modules/.bin/next lint"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.52.0",
     "currency.js": "^2.0.4",
     "dotenv": "^16.0.3",
