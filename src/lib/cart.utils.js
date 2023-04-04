@@ -45,9 +45,7 @@ export function addToCart(product, cartItems, setCartItems) {
       .then(response => {
           // Handle redirect response
           const data = response.json();
-          console.log(response, data)
-          console.log("redirecting...");
-          window.location.href = data.url;
+          window.location.href = data.data.url;
       })
       .catch(error => {
         // handle error
