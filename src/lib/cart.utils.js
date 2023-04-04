@@ -31,3 +31,22 @@ export function addToCart(product, cartItems, setCartItems) {
     );
     setCartItems(updatedCartItems.filter((item) => item.quantity > 0));
   }
+
+  export async function checkoutCart(cart) {
+    console.log(process.env.NEXT_PUBLIC_CHECKOUT_ENDPOINT)
+    fetch(process.env.NEXT_PUBLIC_CHECKOUT_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ cart })
+    })
+      .then(response => {
+        // handle successful response
+        console.log(response)
+      })
+      .catch(error => {
+        // handle error
+        console.error(error)
+      });
+  }

@@ -3,7 +3,7 @@ import { getProducts } from '@/lib/products';
 import currency from 'currency.js';
 import { useState, useEffect } from 'react';
 import Cart from '@/components/Cart';
-import { addToCart, removeFromCart, incrementQuantity, decrementQuantity } from '@/lib/cart.utils';
+import { addToCart, removeFromCart, incrementQuantity, decrementQuantity, checkoutCart } from '@/lib/cart.utils';
 
 
 export default function ItsYaBoi({ allProducts }) {
@@ -20,6 +20,9 @@ export default function ItsYaBoi({ allProducts }) {
   };
   const handleDecrement = (productId) => {
     decrementQuantity(productId, cartItems, setCartItems);
+  };
+  const handleSendCart = (cartItems) => {
+    checkoutCart(cartItems)
   };
 
   useEffect(() => {
@@ -51,8 +54,9 @@ export default function ItsYaBoi({ allProducts }) {
           cartItems={cartItems} 
           onIncrement={handleIncrement} 
           onDecrement={handleDecrement} 
-          onDelete={handleRemoveFromCart} 
-        />    
+          onDelete={handleRemoveFromCart}
+          onCheckout={handleSendCart} 
+        />
   </>
   )
 }

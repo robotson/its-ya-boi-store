@@ -1,7 +1,7 @@
 import React from 'react';
 import currency from 'currency.js';
 
-function Cart({ cartItems, onIncrement, onDecrement, onDelete }) {
+function Cart({ cartItems, onIncrement, onDecrement, onDelete, onCheckout }) {
     return (
       <>
         <h1>Your cart:</h1>
@@ -9,11 +9,10 @@ function Cart({ cartItems, onIncrement, onDecrement, onDelete }) {
           <ul>
             {cartItems.map((item) => (
               <li key={item.id}>
-                {item.name} x {item.quantity}{' '}
-
-                = {currency(item.quantity * item.price.unit_amount, {
+                {item.name} x {item.quantity}{' ('}
+                {currency(item.quantity * item.price.unit_amount, {
                   fromCents: true,
-                }).format()}{' '}
+                }).format()}{') '}
                 <button onClick={() => onIncrement(item)}>+</button>{' '}
                 <button onClick={() => onDecrement(item)}>-</button>{' '}
                 <button onClick={() => onDelete(item)}>delete</button>
@@ -27,7 +26,7 @@ function Cart({ cartItems, onIncrement, onDecrement, onDelete }) {
                   0
                 ),
                 { fromCents: true }
-              ).format()}
+              ).format()} <button onClick={() => onCheckout(cartItems)}>Proceed to Checkout</button>
             </li>
           </ul>
         ) : (
