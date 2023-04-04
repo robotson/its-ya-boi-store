@@ -42,8 +42,12 @@ export function addToCart(product, cartItems, setCartItems) {
       body: JSON.stringify({ cart })
     })
       .then(response => {
-        // handle successful response
-        console.log(response)
+        if (response.redirected) {
+          // Handle redirect response
+          window.location.href = response.url;
+        } else {
+          // Handle successful response
+          console.log(response);
       })
       .catch(error => {
         // handle error
