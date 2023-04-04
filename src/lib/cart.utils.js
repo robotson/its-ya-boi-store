@@ -48,6 +48,7 @@ export function addToCart(product, cartItems, setCartItems) {
         } else {
           // Handle successful response
           console.log(response);
+        }
       })
       .catch(error => {
         // handle error
