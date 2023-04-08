@@ -38,4 +38,4 @@ yarn-error.log*
 !.env.vault
 
 # for now i don't want my /public folder in there
-/public
+/public/
