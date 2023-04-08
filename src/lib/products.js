@@ -13,6 +13,9 @@ export async function getProducts() {
     try {
         // set up directory for writing public files:
         const publicPath = path.join(process.cwd(), 'public');
+        if (!fs.existsSync(publicPath)) {
+            fs.mkdirSync(publicPath);
+        }
         const dataDir = path.join(publicPath, 'data');
         if (!fs.existsSync(dataDir)) {
           fs.mkdirSync(dataDir);
