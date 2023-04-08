@@ -23,7 +23,7 @@ function Confirmation() {
         } else {
             setMessage('');
         }
-    }, []);
+    }, [router]);
 
     return <div>
         <h1>{message}</h1>
