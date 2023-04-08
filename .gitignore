@@ -31,7 +31,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# dotenv-vault stuff
 .env*
 .flaskenv*
 !.env.project
 !.env.vault
+
+# for now i don't want my /public folder in there
+/public
