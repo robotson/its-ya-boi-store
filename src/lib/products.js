@@ -50,6 +50,8 @@ export async function getProducts() {
             const arrayBuffer = await imageResponse.arrayBuffer();
             const buffer = Buffer.from(arrayBuffer);
             fs.createWriteStream(imageFilePath).write(buffer);
+
+            products.data[i]['local_image'] = fileName;
         }
         // Write a json file of the product data
         const productsDataFile = path.join(dataDir, 'products.json');
