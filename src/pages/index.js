@@ -1,69 +1,10 @@
 import Head from 'next/head';
+import ProductCard from '@/components/ProductCard';
+import { useTheme } from '@mui/material/styles';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import styles from "@/styles/Home.module.css";
 import { getProducts } from '@/lib/products';
-import currency from 'currency.js';
-import { useState, useEffect } from 'react';
-import Cart from '@/components/Cart';
-import { addToCart, removeFromCart, incrementQuantity, decrementQuantity, checkoutCart } from '@/lib/cart.utils';
-
-
-export default function ItsYaBoi({ allProducts }) {
-  const [cartItems, setCartItems] = useState([]);
-
-  const handleAddToCart = (product) => {
-    addToCart(product, cartItems, setCartItems);
-  };
-  const handleRemoveFromCart = (productId) => {
-    removeFromCart(productId, cartItems, setCartItems);
-  };
-  const handleIncrement = (productId) => {
-    incrementQuantity(productId, cartItems, setCartItems);
-  };
-  const handleDecrement = (productId) => {
-    decrementQuantity(productId, cartItems, setCartItems);
-  };
-  const handleSendCart = (cartItems) => {
-    checkoutCart(cartItems)
-  };
-
-  useEffect(() => {
-    const cartItemsFromStorage = JSON.parse(localStorage.getItem('cartItems')) || [];
-    setCartItems(cartItemsFromStorage);
-  }, []);
-  useEffect(() => {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  }, [cartItems]);
-
-  return (
-    <>
-      <Head>
-        <title>{process.env.GREETING + " webstore"}</title>
-        {/* <meta 
-          http-equiv="Content-Security-Policy"
-          content="frame-src https://checkout.stripe.com;"
-        /> */}
-      </Head>
-      <h1>
-        {"It's ya boi!"}
-      </h1>
-      <p>{"Doin it right once again"}</p>
-      <ul>
-          {allProducts.map((product) => (
-          <li key={product.id}>
-            {product.name}{", "}{currency(product.price.unit_amount, { fromCents: true }).format()} 
-            <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
-          </li>
-        ))}
-      </ul>
-      <Cart 
-          cartItems={cartItems} 
-          onIncrement={handleIncrement} 
-          onDecrement={handleDecrement} 
-          onDelete={handleRemoveFromCart}
-          onCheckout={handleSendCart} 
-        />
-  </>
-  )
-}
 
 export async function getStaticProps() {
   const allProducts = await getProducts();
@@ -72,4 +13,24 @@ export async function getStaticProps() {
       allProducts,
     },
   };
+}
+
+export default function Home({ allProducts }) {
+  const theme = useTheme();
+  return (
+    <>
+      <Head>
+        <title>{process.env.GREETING + " webstore"}</title>
+      </Head>
+      <Container maxWidth="lg">
+        <Grid className={styles.container} container spacing={3}>
+          {allProducts.map((product) => (
+              <Grid item xs={12} sm={6} key={product.id}>
+                <ProductCard product={product}/>
+              </Grid>
+          ))}
+        </Grid>
+      </Container>
+  </>
+  )
 }

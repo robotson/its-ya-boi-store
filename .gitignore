@@ -37,5 +37,5 @@ yarn-error.log*
 !.env.project
 !.env.vault
 
-# for now i don't want my /public folder in there
+# public files i'll not save
 /public/

@@ -1,3 +1,4 @@
+//this code is kept around for reference until i finish builing out the edit cart page.
 import {loadStripe} from '@stripe/stripe-js';
 export function addToCart(product, cartItems, setCartItems) {
     const existingItem = cartItems.find((item) => item.id === product.id);
