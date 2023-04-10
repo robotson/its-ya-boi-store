@@ -1,38 +1,39 @@
-import React from 'react';
-import currency from 'currency.js';
+import { useCartContext } from '@/contexts/CartContext';
 
-function Cart({ cartItems, onIncrement, onDecrement, onDelete, onCheckout }) {
-    return (
-      <>
-        <h1>Your cart:</h1>
-        {cartItems.length > 0 ? (
-          <ul>
-            {cartItems.map((item) => (
-              <li key={item.id}>
-                {item.name} x {item.quantity}{' ('}
-                {currency(item.quantity * item.price.unit_amount, {
-                  fromCents: true,
-                }).format()}{') '}
-                <button onClick={() => onIncrement(item)}>+</button>{' '}
-                <button onClick={() => onDecrement(item)}>-</button>{' '}
-                <button onClick={() => onDelete(item)}>delete</button>
-              </li>
-            ))}
-            <li>
-              Total:{' '}
-              {currency(
-                cartItems.reduce(
-                  (total, item) => total + item.quantity * item.price.unit_amount,
-                  0
-                ),
-                { fromCents: true }
-              ).format()} <button onClick={() => onCheckout(cartItems)}>Proceed to Checkout</button>
-            </li>
-          </ul>
-        ) : (
-          <p>(cart is empty)</p>
-        )}
-      </>
+function Cart() {
+    const { cartContext, setCartContext } = useCartContext();
+
+    return (<></>
+      // <>
+      //   <h1>Your cart:</h1>
+      //   {cartContext.length > 0 ? (
+      //     <ul>
+      //       {cartContext.map((item) => (
+      //         <li key={item.id}>
+      //           {item.name} x {item.quantity}{' ('}
+      //           {currency(item.quantity * item.price.unit_amount, {
+      //             fromCents: true,
+      //           }).format()}{') '}
+      //           <button onClick={() => onIncrement(item)}>+</button>{' '}
+      //           <button onClick={() => onDecrement(item)}>-</button>{' '}
+      //           <button onClick={() => onDelete(item)}>delete</button>
+      //         </li>
+      //       ))}
+      //       <li>
+      //         Total:{' '}
+      //         {currency(
+      //           cartContext.reduce(
+      //             (total, item) => total + item.quantity * item.price.unit_amount,
+      //             0
+      //           ),
+      //           { fromCents: true }
+      //         ).format()} <button disabled onClick={() => onCheckout(cartContext)}>Proceed to Checkout</button>
+      //       </li>
+      //     </ul>
+      //   ) : (
+      //     <p>(cart is empty)</p>
+      //   )}
+      // </>
     );
   }
 
