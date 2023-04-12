@@ -9,6 +9,11 @@ const AddToCartButton = ({ product }) => {
   const [inCart, setInCart] = useState(
     cartContext.find((item) => item.id === product.id) !== undefined
   );
+
+  useEffect(() => {
+      setInCart(cartContext.find((item) => item.id === product.id) !== undefined)
+  }, [cartContext, product.id]);
+  
   const [cartQuantity, setCartQuantity] = useState(() => {
     if (inCart) {
       product = cartContext.find((item) => item.id === product.id);

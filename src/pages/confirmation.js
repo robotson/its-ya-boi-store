@@ -7,7 +7,7 @@ function Confirmation() {
 
     useEffect(() => {
         // Clear cart from local storage
-        localStorage.removeItem('cartItems');
+        localStorage.removeItem('cart');
 
         const successMessage = `Your order was successfully processed.
         You should recieve an email receipt for your purchase from Stripe, 
