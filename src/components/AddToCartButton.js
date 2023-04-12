@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCartContext } from "@/contexts/CartContext";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
