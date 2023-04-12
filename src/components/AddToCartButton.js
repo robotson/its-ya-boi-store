@@ -6,14 +6,10 @@ import { useRouter } from "next/router";
 const AddToCartButton = ({ product }) => {
   const router = useRouter();
   const { cartContext, setCartContext } = useCartContext();
+
   const [inCart, setInCart] = useState(
     cartContext.find((item) => item.id === product.id) !== undefined
   );
-
-  useEffect(() => {
-      setInCart(cartContext.find((item) => item.id === product.id) !== undefined)
-  }, [cartContext, product.id]);
-  
   const [cartQuantity, setCartQuantity] = useState(() => {
     if (inCart) {
       product = cartContext.find((item) => item.id === product.id);
@@ -22,6 +18,15 @@ const AddToCartButton = ({ product }) => {
       return 0;
     }
   });
+
+  useEffect(() => {
+    const prod = cartContext.find((item) => item.id === product.id)
+    if(prod){
+      setInCart(true);
+      setCartQuantity(prod.quantity);
+    }
+  }, [cartContext, product.id]);
+
 
   const handleAddToCart = () => {
     if (inCart) {
