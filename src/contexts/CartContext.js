@@ -1,45 +1,26 @@
-import { createContext, useContext, useState } from 'react';
-// import {loadStripe} from '@stripe/stripe-js';
-
+import { createContext, useContext, useState, useEffect } from "react";
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
+  // state to be shared for cart across the app heirarchy
   const [cartContext, setCartContext] = useState([]);
 
-//   const checkoutCart = async () => {
-//     const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
-//     // may have to provide stripe to other parts of the app?
-//     //setStripe(stripe);
+  // read in any cart items left in the browser's local storage
+  useEffect(() => {
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartContext(cartItems);
+  }, []);
 
-//     fetch(process.env.NEXT_PUBLIC_CHECKOUT_ENDPOINT, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify({ cart: cartItems })
-//     })
-//       .then(response => response.json())
-//       .then(data => {
-//         stripe.redirectToCheckout({
-//           sessionId: data.sessionId
-//         });
-//       })
-//       .catch(error => {
-//         // handle error
-//         console.error(error)
-//       });
-//   };
+  // monitor cartContext for updates and store in localStorage to persist for refreshes
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartContext));
+  }, [cartContext]);
 
   return (
     <CartContext.Provider
       value={{
         cartContext,
         setCartContext,
-        // addToCart,
-        // removeFromCart,
-        // incrementQuantity,
-        // decrementQuantity,
-        // checkoutCart
       }}
     >
       {children}
@@ -48,5 +29,5 @@ export const CartProvider = ({ children }) => {
 };
 
 export function useCartContext() {
-    return useContext(CartContext);
+  return useContext(CartContext);
 }
