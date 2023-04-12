@@ -14,6 +14,7 @@ export const CartProvider = ({ children }) => {
   // monitor cartContext for updates and store in localStorage to persist for refreshes
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartContext));
+    console.log('cart changed', cartContext);
   }, [cartContext]);
 
   return (
