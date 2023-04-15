@@ -150,7 +150,7 @@ export default function CartPage({ allProducts }) {
                       {currency(product.price.metadata.us_ship_additional, {
                         fromCents: true,
                       }).format()}{" "}
-                      shipping for each add'l item)
+                      shipping for each add&apos;l item)
                     </Typography>
                   </CardContent>
                 </Box>
@@ -221,7 +221,7 @@ export default function CartPage({ allProducts }) {
                 display: "flex",
                 flexDirection: "column",
                 p: ".2em",
-                mt: `${isSmallerScreen ? ".5em" : "0em"}`,
+                mt: `${isSmallerScreen ? ".5em" : "0"}`,
                 backgroundColor: "#fafafa",
                 backgroundImage: `linear-gradient(to bottom, #fafafa, ${purple[50]})`,
               }}
