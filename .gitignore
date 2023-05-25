@@ -37,5 +37,4 @@ yarn-error.log*
 !.env.project
 !.env.vault
 
-# public files i'll not save
-/public/
+/public/images/*
