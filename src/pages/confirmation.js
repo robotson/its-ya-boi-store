@@ -54,7 +54,7 @@ function Confirmation() {
       <DialogContent>
         <List>
           <ListItem>
-            <ListItemText primary="You should recieve an email receipt for your purchase from Stripe." />
+            <ListItemText primary="You should recieve an email confirmation of your order." />
           </ListItem>
           <ListItem>
             <ListItemText primary='You will also receive an additional email from "it&apos;s ya boi webstore" (lance@robotson.media) with the tracking number for your order when it ships.' />
